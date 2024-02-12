@@ -1,5 +1,5 @@
 import React from 'react'
-import Expense_item from './components/Expense_item';
+import ExpenseItem from './components/ExpenseItem';
 
 function App()
 {
@@ -10,14 +10,12 @@ function App()
 
   return( <div>
            Enter your expenses
-           <Expense_item 
+           <ExpenseItem 
               date={expenseDate}
               title={expenseTitle} 
               amount={expenseAmount}>
-            </Expense_item>
+            </ExpenseItem>
         </div>
-         
-
         );
   }
 

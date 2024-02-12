@@ -1,12 +1,12 @@
 import React from 'react'
 
-import './Expense_item.css' ;
+import './ExpenseItem.css' ;
 
-function Expense_item(props) 
+function ExpenseItem(props) 
 {
-    const month=props.date.toLocaleString('en-US', {month: 'long'});
+    const month=props.date.getMonth();
     const year=props.date.getFullYear();
-    const day=props.date.toLocaleString('en-US', {day: '2-digits'});;
+    const day=props.date.getDay();
 
 
     return ( <div className="outer-div">
@@ -34,4 +34,4 @@ function Expense_item(props)
     );
 }
 
-export default Expense_item;
+export default ExpenseItem;
