@@ -1,36 +1,41 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import './ExpenseItem.css' ;
+import ExpenseDate from './ExpenseDate';
 
-function ExpenseItem(props) 
+ const ExpenseItem=(props) =>
 {
-    const month=props.date.getMonth();
-    const year=props.date.getFullYear();
-    const day=props.date.getDay();
+    const[newTitle , setNewTitle]= useState("");
+    const[title , setTitle]= useState(props.title);
 
+    const clickHandler = () =>
+    {
+        setTitle(newTitle);
+    }
+    const changeHandler=(event)=>
+    {
+        setNewTitle(event.target.value);
+    }
 
-    return ( <div className="outer-div">
-    <div className="main-box">
-       <div className="head-bar">
-        <div className="head-title">Expense Tracker</div>
-        </div>
-        <div className="expense-list">
-            <div className='expense-item'>
-                <div className='circle'></div>
-                <div className='title'>
-                    <div>{props.title}</div>
-                    <div>
-                        <div>{ month }</div>
-                        <div>{ year }</div>
-                        <div>{ day }</div>
+    return ( <div>
+    <div className="outer-div">
+        <div className="main-box">
+            <div className="expense-list">
+                <div className='expense-item'>
+                    <div className='circle'></div>
+                    <div className='title'>
+                         <div>{title}</div>
+                        <ExpenseDate date={props.date} />
                     </div>
+                    <div className='expense-item-price'>{props.amount}$</div>
                 </div>
-                <div className='expense-item-price'>{props.amount}$</div>
+                <input type='text' value={newTitle} onChange={changeHandler}/>
+                <button onClick={clickHandler}>Change title</button>
             </div>
-       
         </div>
     </div>
- </div>
+    </div>
+   
     );
 }
 
